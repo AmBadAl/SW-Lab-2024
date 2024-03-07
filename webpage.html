@@ -47,6 +47,16 @@
         p {
             margin-top: 20px;
         }
+		
+		div {
+			display: flex;
+			align-items: center;
+		}
+
+		input[type="radio"] {
+			margin-right: 5px;
+		}
+
     </style>
 </head>
 
@@ -87,6 +97,37 @@
             <option value="moderate">Moderate</option>
             <option value="daily">Daily</option>
         </select>
+		
+		<label for="diet">Dietary Habits:</label>
+        <select id="diet" name="diet" required>
+            <option value="">Please select</option>
+            <option value="balanced">Balanced</option>
+            <option value="vegetarian">Vegetarian</option>
+            <option value="high-meat">High in meat consumption</option>
+            <option value="high-processed">High in processed foods</option>
+        </select>
+
+        <label for="exercise">Exercise Frequency:</label>
+        <select id="exercise" name="exercise" required>
+            <option value="">Please select</option>
+            <option value="none">None</option>
+            <option value="occasional">Occasional</option>
+            <option value="regular">Regular</option>
+            <option value="daily">Daily</option>
+        </select>
+		
+		<label for="family-history">Family History of Cancer:</label>
+        <input type="text" id="family-history" name="family_history">
+
+        <label>Previous Cancer Diagnosis:</label>
+		<div>
+			<input type="radio" id="previous-diagnosis-yes" name="previous_diagnosis" value="yes">
+			<label for="previous-diagnosis-yes">Yes</label>
+			<input type="radio" id="previous-diagnosis-no" name="previous_diagnosis" value="no">
+			<label for="previous-diagnosis-no">No</label>
+		</div>
+
+
 
         <button type="button" onclick="submitForm()">Submit</button>
 		
