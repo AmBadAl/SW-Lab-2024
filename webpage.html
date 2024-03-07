@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cancer Prediction</title>
+    <title>Breast Cancer Prediction</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 20px;
-            background-color: #b4ddf4; /* Preserved previous background color */
-            color: #333; /* Dark text color */
+            background-color: #b4ddf4;
+            color: #333;
         }
 
         h1 {
-            color: #007bff; /* Blue header color */
+            color: #007bff;
         }
 
         label {
@@ -32,7 +32,7 @@
         }
 
         button {
-            background-color: #28a745; /* Green button color */
+            background-color: #28a745;
             color: white;
             padding: 12px 20px;
             border: none;
@@ -41,7 +41,7 @@
         }
 
         button:hover {
-            background-color: #218838; /* Darker green on hover */
+            background-color: #218838;
         }
 
         p {
@@ -94,14 +94,30 @@
         /* Remove display: flex; and align-items: center; if you had added it */
     }
 
+
+
+        /* New styles for the medical advice box */
+        .medical-advice-box {
+            background-color: #d7f8ec; /* Light red background color */
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .medical-advice-box h2 {
+            color: #721c24; 
+        }
     </style>
 </head>
 
 <body>
-    <h1>Cancer Prediction</h1>
-    <p>This website collects information for the purpose of cancer prediction. Please provide the following details:</p>
-
+    <h1>Breast Cancer Prediction</h1>
+    <p>This website collects information for the purpose of breast cancer prediction. Please provide the following details:(Be aware that all of the fields are required)</p>
+	<p id="globalError" style="color: red;"></p>
+	<span id="previousDiagnosisError" style="color: red;"></span>
     <form id="cancerPredictionForm">
+		<p id="globalError" style="color: red;"></p>
+		<span id="previousDiagnosisError" style="color: red;"></span>
         <label for="age">Age:</label>
         <input type="number" id="age" name="age" required>
 
@@ -117,8 +133,8 @@
 
         <label for="height">Height (cm):</label>
         <input type="number" id="height" name="height" required>
-		
-		<label for="smoking">Smoking Habits:</label>
+
+        <label for="smoking">Smoking Habits:</label>
         <select id="smoking" name="smoking" required>
             <option value="">Please select</option>
             <option value="never">Never</option>
@@ -126,8 +142,8 @@
             <option value="occasional">Occasional</option>
             <option value="regular">Regular</option>
         </select>
-		
-		<label for="alcohol">Alcohol Consumption:</label>
+
+        <label for="alcohol">Alcohol Consumption:</label>
         <select id="alcohol" name="alcohol" required>
             <option value="">Please select</option>
             <option value="never">Never</option>
@@ -168,19 +184,85 @@
 			</label>
 		</div>
 
-
-        <button type="button" onclick="submitForm()">Submit</button>
 		
 		
+        <button type="submit">Submit</button>
     </form>
 
-    <p>Note: The information collected is solely for the purpose of cancer prediction and will be treated with confidentiality.</p>
+    <p>Note: The information collected is solely for the purpose of breast cancer prediction and will be treated with confidentiality.</p>
+
+    <!-- Medical advice section in a box -->
+    <div class="medical-advice-box">
+        <h2>Medical Advice:</h2>
+        <p>Breast cancer is a serious health concern that affects both men and women. It's essential to prioritize regular medical checkups and screenings for early detection. Early detection significantly improves the chances of successful treatment and recovery.</p>
+        <p>Remember to consult with your healthcare provider about appropriate screenings and preventive measures based on your individual health history.</p>
+    </div>
 
     <script>
-        function submitForm() {
-            // Add your logic here to handle the form submission
-            alert('Form submitted successfully!');
-        }
-    </script>
+			document.addEventListener('DOMContentLoaded', function() {
+			// Add an event listener for the form onsubmit event
+			document.getElementById('cancerPredictionForm').addEventListener('submit', function(event) {
+				event.preventDefault(); // Prevent the default form submit action
+				validateForm();
+			});
+		});
+
+		function validateForm() {
+			var formIsValid = true;
+			var errorMessage = "This field is required.";
+
+			// Clear global error messages
+			document.getElementById("globalError").textContent = "";
+
+			// Function to check if a field is empty
+			function checkField(fieldId) {
+				var field = document.getElementById(fieldId);
+				if (field.value.trim() === "") {
+					// If the field is empty, set the placeholder to the error message
+					field.style.backgroundColor = "#ffdddd"; // Highlight the field with a light red background
+					field.placeholder = "This field is required";
+					formIsValid = false;
+				} else {
+					// If the field is not empty, remove the highlight
+					field.style.backgroundColor = "";
+				}
+			}
+			function checkSelectField(fieldId) {
+				var field = document.getElementById(fieldId);
+				if (field.value === "" || field.value === "Please select") {
+					field.style.borderColor = "red"; // Highlight the field with a red border
+					formIsValid = false;
+				} else {
+					field.style.borderColor = "";
+				}
+			}
+
+			// Validate each field
+			checkField('age');
+			checkField('gender');
+			checkField('weight');
+			checkField('height');
+			checkSelectField('smoking');
+			checkSelectField('alcohol');
+			checkSelectField('diet');
+			checkSelectField('exercise');
+			checkField('family-history');
+			// Since previous diagnosis is a radio button, handle separately
+			if (!document.querySelector('input[name="previous_diagnosis"]:checked')) {
+				document.getElementById('previousDiagnosisError').textContent = 'previous-diagnosis field is not checked';
+				formIsValid = false;
+			} else {
+				document.getElementById('previousDiagnosisError').textContent = "";
+			}
+
+			if (!formIsValid) {
+        document.getElementById("globalError").textContent = "Some required fields are empty.";
+			} else {
+				document.getElementById("globalError").textContent = "";
+				// Submit the form or display a success message
+				alert('Form submitted successfully!');
+			}
+		}
+</script>
 </body>
 </html>
