@@ -56,6 +56,46 @@
 		.radio-group {
         margin-bottom: 15px;
     }
+<<<<<<< HEAD
+=======
+
+    /* This style is for each radio button and its label */
+    .radio-container {
+        display: inline-block;
+        margin-right: 20px; /* Adjust spacing as needed */
+        cursor: pointer; /* Change the cursor to a pointer when hovering over the label */
+    }
+
+    .radio-container input[type="radio"] {
+        /* Adjustments for radio button size */
+        -moz-appearance: none; /* Hide the default appearance on Firefox */
+        -webkit-appearance: none; /* Hide the default appearance on Chrome and Safari */
+        appearance: none;
+        width: 20px; /* Width of the radio button */
+        height: 20px; /* Height of the radio button */
+        border: 2px solid #007bff; /* Border to look like an unselected radio button */
+        border-radius: 50%; /* Makes it round */
+        margin-right: 8px; /* Space between the radio button and the label */
+        vertical-align: middle; /* Align it vertically centered */
+        position: relative; /* Position relative for the placement of the pseudo-element */
+    }
+
+    .radio-container input[type="radio"]:checked::before {
+        content: '';
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 12px;
+        height: 12px;
+        background-color: #007bff; /* Background color when selected */
+        border-radius: 50%; /* Makes it round */
+    }
+
+    /* Remove the global flexbox styling from all div elements */
+    div {
+        /* Remove display: flex; and align-items: center; if you had added it */
+    }
+>>>>>>> 305ab97 (fix the checkboxes for cancer previous diagnosis)
 
     /* This style is for each radio button and its label */
     .radio-container {
@@ -183,9 +223,14 @@
 		</div>
 
 
+<<<<<<< HEAD
 <!-- ... existing form fields ... -->
 
 <!-- Add a span for an error message after each input/select that requires validation -->
+=======
+        <button type="button" onclick="submitForm()">Submit</button>
+		
+>>>>>>> 305ab97 (fix the checkboxes for cancer previous diagnosis)
 		
         <button type="submit">Submit</button>
     </form>
