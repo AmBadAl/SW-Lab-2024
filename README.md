@@ -31,6 +31,8 @@ First project of the Software Lab Course (404041)
 ![image](https://github.com/AmBadAl/SW-Lab-2024/assets/62250863/7acc3f02-0e3c-4bd1-841f-b3f515250104)
 
 تعدادی نمونه دستور git استفاده شده در زیر نمایش داده شده است:
+</div>
+
 ```
 ebrah@DESKTOP-HIUHQ8A MINGW64 ~/My things/university/10th term/SE lab/1/code/SW-Lab-2024 (main)
 $ git status
@@ -68,11 +70,10 @@ $ git commit -m "testing add file"
 ```
 
 
-</div>
-
 ## ساخت شاخه‌ها و برطرف کردن conflictها
 <div dir="rtl">
 با استفاده از دستورات زیر می‌توان شاخه‌ها را ایجاد کرد:
+</div>
 
 ```
 ebrah@DESKTOP-HIUHQ8A MINGW64 ~/My things/university/10th term/SE lab/1/code/SW-Lab-2024 (main)
@@ -89,7 +90,9 @@ ebrah@DESKTOP-HIUHQ8A MINGW64 ~/My things/university/10th term/SE lab/1/code/SW-
 $ git branch design-webpage
 ```
 
+<div dir="rtl">
 با دستور git checkout <branchname> می‌توان بین شاخه‌ها جابجا شد.
+</div>
 
 ```
 ebrah@DESKTOP-HIUHQ8A MINGW64 ~/My things/university/10th term/SE lab/1/code/SW-Lab-2024 (main)
@@ -105,6 +108,8 @@ $ git branch
   initial
   main
 ```
+
+<div dir="rtl">
 با مراجعه به تنظیمات مخزن و بخش branches آن، می‌توان از شاخه main محافظت کرد طوری که صرفا از طریق pull request امکان‌پذیر باشد.
 
 ![image](https://github.com/AmBadAl/SW-Lab-2024/assets/62250863/d3e998bb-41c6-4dfe-b50b-5ee907745bde)
@@ -126,7 +131,6 @@ $ git branch
 همچنین تاریخچه mergeها در بخش کامیت‌ها قابل مشاهده است. 
 
 ![image](https://github.com/AmBadAl/SW-Lab-2024/assets/62250863/a3408498-1a27-4122-9a27-24ed6deb76f9)
-
 
 </div>
 
